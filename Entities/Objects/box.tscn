@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://bjd7wix8no342"]
+
+[ext_resource type="Script" uid="uid://c3j40lioy364q" path="res://Entities/Objects/box.gd" id="1_k7g7e"]
+[ext_resource type="Texture2D" uid="uid://lw8fwl5m24er" path="res://Common/Assets/sokoban_spritesheet.png" id="2_k7g7e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3en5j"]
+size = Vector2(64, 64)
+
+[node name="Box" type="Node2D" unique_id=1294693934]
+z_index = 2
+script = ExtResource("1_k7g7e")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=266884639]
+collision_layer = 4
+collision_mask = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1945126230]
+shape = SubResource("RectangleShape2D_3en5j")
+
+[node name="RayCastDown" type="RayCast2D" parent="CharacterBody2D" unique_id=2128433580]
+collision_mask = 6
+hit_from_inside = true
+
+[node name="RayCastUp" type="RayCast2D" parent="CharacterBody2D" unique_id=1699997290]
+target_position = Vector2(0, -50)
+collision_mask = 6
+hit_from_inside = true
+
+[node name="RayCastRight" type="RayCast2D" parent="CharacterBody2D" unique_id=543440741]
+target_position = Vector2(50, 0)
+collision_mask = 6
+hit_from_inside = true
+
+[node name="RayCastLeft" type="RayCast2D" parent="CharacterBody2D" unique_id=1852208818]
+target_position = Vector2(-50, 0)
+collision_mask = 6
+hit_from_inside = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1368938152]
+texture = ExtResource("2_k7g7e")
+region_enabled = true
+region_rect = Rect2(384, 192, 64, 64)

@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bhxyco8w65me8"]
+
+[ext_resource type="Script" uid="uid://d20or5n2p3fv8" path="res://Stages/main.gd" id="1_n1pa2"]
+
+[sub_resource type="Gradient" id="Gradient_kerj0"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.003690037, 0.19188192, 0.32472324, 0.6494465, 0.8191882, 1)
+colors = PackedColorArray(0.101960786, 0.10980392, 0.11764706, 1, 0.17254902, 0.20784314, 0.24705882, 1, 0.12534776, 0.15469635, 0.18741977, 1, 0.11303208, 0.1399757, 0.17003247, 1, 0.17254902, 0.20784314, 0.24705882, 1, 0.07058824, 0.08627451, 0.101960786, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_72f1l"]
+gradient = SubResource("Gradient_kerj0")
+
+[node name="Main" type="Node2D" unique_id=2135986837]
+script = ExtResource("1_n1pa2")
+
+[node name="LevelContainer" type="Node" parent="." unique_id=1081395441]
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1400136455]
+offset_right = 1024.0
+offset_bottom = 576.0
+texture = SubResource("GradientTexture2D_72f1l")

@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dryln5iv8c3op"]
+
+[ext_resource type="Script" uid="uid://kcnd11rdp8i1" path="res://Entities/Objects/switch.gd" id="1_3bcdg"]
+[ext_resource type="Texture2D" uid="uid://byaepmwaywhhd" path="res://Common/Assets/sokoban_tilesheet.png" id="2_3bcdg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3en5j"]
+size = Vector2(4, 4)
+
+[node name="Switch" type="Area2D" unique_id=1541246161]
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("1_3bcdg")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=772511387]
+z_index = 1
+texture = ExtResource("2_3bcdg")
+region_enabled = true
+region_rect = Rect2(768, 129, 64, 64)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=606266514]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_3en5j")
