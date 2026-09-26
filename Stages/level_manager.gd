@@ -11,11 +11,12 @@ var current_level := 2
 var moveables: Array
 var past_turns: Array[Array]
 
-@onready var level_container: Node = get_tree().root.get_node(
-	"Main/LevelContainer"
-	)
+var level_container: Node
 
 func _ready() -> void:
+	if get_tree().current_scene.name != "Main":
+		return
+	level_container = get_tree().root.get_node("Main/LevelContainer")
 	level_database = load("res://Stages/level_database.tres")
 	load_level()
 	

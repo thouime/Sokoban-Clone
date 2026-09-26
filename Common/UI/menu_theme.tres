@@ -1,0 +1,10 @@
+[gd_resource type="Theme" format=3 uid="uid://cqs6k7ng5ddwn"]
+
+[ext_resource type="FontFile" uid="uid://c5apokn8h0eu3" path="res://Common/Assets/Fonts/PressStart2P.ttf" id="1_qem7y"]
+
+[resource]
+default_font = ExtResource("1_qem7y")
+Button/colors/font_color = Color(0.03137255, 0.03137255, 0.03137255, 1)
+Button/colors/font_focus_color = Color(0.8392157, 0, 0, 1)
+Button/colors/font_hover_color = Color(0.8392157, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0.8392157, 0, 0, 1)

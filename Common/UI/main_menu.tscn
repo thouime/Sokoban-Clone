@@ -1,0 +1,168 @@
+[gd_scene format=3 uid="uid://curnnjtqd7022"]
+
+[ext_resource type="Texture2D" uid="uid://2ht46f01ga2t" path="res://Common/Assets/Icons/link3.png" id="1_1kevw"]
+[ext_resource type="Theme" uid="uid://cqs6k7ng5ddwn" path="res://Common/UI/menu_theme.tres" id="1_c2tq6"]
+[ext_resource type="Script" uid="uid://cvihyi5cif6ak" path="res://Common/UI/main_menu.gd" id="1_g1wmj"]
+[ext_resource type="StyleBox" uid="uid://bgp06upi6ul74" path="res://Common/UI/new_style_box_empty.tres" id="4_6n030"]
+[ext_resource type="Texture2D" uid="uid://cvj25kqb6kjpp" path="res://Common/Assets/menu_logo.png" id="4_qc5ww"]
+
+[sub_resource type="Gradient" id="Gradient_d7tdu"]
+colors = PackedColorArray(0.5803922, 0.15686275, 0.87058824, 1, 1, 0.31764707, 0.70980394, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3en5j"]
+gradient = SubResource("Gradient_d7tdu")
+width = 20
+height = 20
+fill_from = Vector2(0.5, 0)
+fill_to = Vector2(0.5, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3en5j"]
+content_margin_bottom = 40.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6n030"]
+bg_color = Color(0.3882353, 0.09411765, 0.0627451, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+corner_detail = 2
+expand_margin_left = 19.0
+expand_margin_top = 32.0
+expand_margin_right = 53.0
+expand_margin_bottom = 33.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_72f1l"]
+bg_color = Color(0.7411765, 0.5254902, 0.2901961, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.8392157, 0, 0, 1)
+corner_radius_top_left = 13
+corner_radius_top_right = 13
+corner_radius_bottom_right = 13
+corner_radius_bottom_left = 13
+corner_detail = 2
+expand_margin_left = 15.0
+expand_margin_top = 30.0
+expand_margin_right = 50.0
+expand_margin_bottom = 30.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qc5ww"]
+bg_color = Color(0.7764706, 0.68235296, 0.5803922, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.3882353, 0.09411765, 0.0627451, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 2
+expand_margin_left = 10.0
+expand_margin_top = 25.0
+expand_margin_right = 45.0
+expand_margin_bottom = 25.0
+
+[node name="MainMenu" type="MarginContainer" unique_id=825664585]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_c2tq6")
+theme_override_constants/margin_bottom = 0
+script = ExtResource("1_g1wmj")
+pointer_icon = ExtResource("1_1kevw")
+
+[node name="bg_gradient" type="TextureRect" parent="." unique_id=1004291571]
+layout_mode = 2
+texture = SubResource("GradientTexture2D_3en5j")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2056927348]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+alignment = 2
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=457743144]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "© 2026 PIE FACTORY INC."
+
+[node name="Label2" type="Label" parent="VBoxContainer" unique_id=776128548]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_styles/normal = SubResource("StyleBoxEmpty_3en5j")
+text = "© 2025, 2026 KINGDOM OF PIE INC."
+
+[node name="HBoxContainer" type="VBoxContainer" parent="." unique_id=1610498798]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Logo" type="TextureRect" parent="HBoxContainer" unique_id=17024403]
+layout_mode = 2
+texture = ExtResource("4_qc5ww")
+stretch_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer" unique_id=171188817]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="Panel3" type="Panel" parent="HBoxContainer/MarginContainer" unique_id=1228789091]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6n030")
+
+[node name="Panel2" type="Panel" parent="HBoxContainer/MarginContainer" unique_id=1127460436]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_72f1l")
+
+[node name="Panel" type="Panel" parent="HBoxContainer/MarginContainer" unique_id=2107622802]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qc5ww")
+
+[node name="button_container" type="VBoxContainer" parent="HBoxContainer/MarginContainer" unique_id=1457213089]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 10
+
+[node name="level_select_button" type="Button" parent="HBoxContainer/MarginContainer/button_container" unique_id=1961828452]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.03137255, 0.03137255, 0.03137255, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("4_6n030")
+theme_override_styles/pressed = ExtResource("4_6n030")
+theme_override_styles/hover = ExtResource("4_6n030")
+theme_override_styles/focus = ExtResource("4_6n030")
+text = "Super Sokoban"
+alignment = 0
+
+[node name="versus_button" type="Button" parent="HBoxContainer/MarginContainer/button_container" unique_id=1617404347]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("4_6n030")
+theme_override_styles/pressed = ExtResource("4_6n030")
+theme_override_styles/hover = ExtResource("4_6n030")
+theme_override_styles/focus = ExtResource("4_6n030")
+text = "Versus Sokoban"
+alignment = 0
+
+[node name="level_editor_button" type="Button" parent="HBoxContainer/MarginContainer/button_container" unique_id=1294698348]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("4_6n030")
+theme_override_styles/pressed = ExtResource("4_6n030")
+theme_override_styles/hover = ExtResource("4_6n030")
+theme_override_styles/focus = ExtResource("4_6n030")
+text = "Sokoban Editor"
+alignment = 0
