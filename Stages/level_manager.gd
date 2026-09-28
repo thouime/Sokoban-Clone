@@ -14,11 +14,9 @@ var past_turns: Array[Array]
 var level_container: Node
 
 func _ready() -> void:
-	if get_tree().current_scene.name != "Main":
-		return
-	level_container = get_tree().root.get_node("Main/LevelContainer")
 	level_database = load("res://Stages/level_database.tres")
-	load_level()
+	#level_container = get_tree().root.get_node("Main/LevelContainer")
+	#load_level()
 	
 func level_changed() -> void:
 	# set tilemap

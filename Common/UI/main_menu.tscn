@@ -166,3 +166,5 @@ theme_override_styles/hover = ExtResource("4_6n030")
 theme_override_styles/focus = ExtResource("4_6n030")
 text = "Sokoban Editor"
 alignment = 0
+
+[connection signal="pressed" from="HBoxContainer/MarginContainer/button_container/level_select_button" to="." method="_on_level_select_button_pressed"]

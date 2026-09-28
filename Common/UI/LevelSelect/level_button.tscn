@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://c0co7k51ies37"]
+
+[ext_resource type="FontFile" uid="uid://c5apokn8h0eu3" path="res://Common/Assets/Fonts/PressStart2P.ttf" id="1_e7rtx"]
+[ext_resource type="Script" uid="uid://bhh4qcd0a301d" path="res://Common/UI/LevelSelect/level_button.gd" id="2_dy0if"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e7rtx"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.96862745, 0.8745098, 0.41960785, 1)
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3882353, 0.09411765, 0.0627451, 1)
+corner_detail = 5
+
+[node name="Button" type="Button" unique_id=352764875]
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_colors/font_color = Color(0.03137255, 0.03137255, 0.03137255, 1)
+theme_override_fonts/font = ExtResource("1_e7rtx")
+theme_override_styles/normal = SubResource("StyleBoxFlat_e7rtx")
+text = "01"
+script = ExtResource("2_dy0if")

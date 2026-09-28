@@ -1,0 +1,390 @@
+[gd_scene format=3 uid="uid://dexreubgd85cg"]
+
+[ext_resource type="Script" uid="uid://ffg3bdusyeq1" path="res://Common/UI/LevelSelect/level_menu.gd" id="1_ts7ly"]
+[ext_resource type="FontFile" uid="uid://c5apokn8h0eu3" path="res://Common/Assets/Fonts/PressStart2P.ttf" id="1_xil51"]
+[ext_resource type="StyleBox" uid="uid://brv4bowea035j" path="res://Common/UI/LevelSelect/level_select_course.tres" id="3_jp8xn"]
+[ext_resource type="StyleBox" uid="uid://b0m07i3s1rga2" path="res://Common/UI/LevelSelect/course_label.tres" id="4_d3fik"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_574xi"]
+bg_color = Color(0.3882353, 0.09411765, 0.0627451, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+corner_detail = 2
+expand_margin_left = 19.0
+expand_margin_top = 32.0
+expand_margin_right = 53.0
+expand_margin_bottom = 33.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o34mv"]
+bg_color = Color(0.7411765, 0.5254902, 0.2901961, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.8392157, 0, 0, 1)
+corner_radius_top_left = 13
+corner_radius_top_right = 13
+corner_radius_bottom_right = 13
+corner_radius_bottom_left = 13
+corner_detail = 2
+expand_margin_left = 15.0
+expand_margin_top = 30.0
+expand_margin_right = 50.0
+expand_margin_bottom = 30.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h83qs"]
+bg_color = Color(0.7764706, 0.68235296, 0.5803922, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.3882353, 0.09411765, 0.0627451, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 2
+expand_margin_left = 10.0
+expand_margin_top = 25.0
+expand_margin_right = 45.0
+expand_margin_bottom = 25.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_42oh2"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 150.0
+content_margin_bottom = 0.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jp8xn"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_color = Color(0.3882353, 0.09411765, 0.0627451, 1)
+corner_detail = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fhbyk"]
+content_margin_left = 25.0
+content_margin_top = 0.0
+content_margin_bottom = 0.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j6qju"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+
+[node name="LevelMenu" type="MarginContainer" unique_id=963853415]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+script = ExtResource("1_ts7ly")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=60378141]
+visible = false
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=389578614]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=2046888049]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="Panel3" type="Panel" parent="VBoxContainer/MarginContainer" unique_id=1797661928]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_574xi")
+
+[node name="Panel2" type="Panel" parent="VBoxContainer/MarginContainer" unique_id=1343545954]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_o34mv")
+
+[node name="Panel" type="Panel" parent="VBoxContainer/MarginContainer" unique_id=422104107]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_h83qs")
+
+[node name="button_container" type="VBoxContainer" parent="VBoxContainer/MarginContainer" unique_id=1640728678]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 1
+
+[node name="course_select_button" type="Button" parent="VBoxContainer/MarginContainer/button_container" unique_id=940871112]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.03137255, 0.03137255, 0.03137255, 1)
+theme_override_fonts/font = ExtResource("1_xil51")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = ExtResource("3_jp8xn")
+theme_override_styles/pressed = ExtResource("3_jp8xn")
+theme_override_styles/hover = ExtResource("3_jp8xn")
+theme_override_styles/focus = ExtResource("3_jp8xn")
+text = "Beginner's Test"
+alignment = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/button_container/course_select_button" unique_id=117561254]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -54.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.03137255, 0.03137255, 0.03137255, 1)
+theme_override_fonts/font = ExtResource("1_xil51")
+theme_override_styles/normal = ExtResource("4_d3fik")
+theme_override_styles/focus = ExtResource("4_d3fik")
+text = "Course"
+
+[node name="course_select_button2" type="Button" parent="VBoxContainer/MarginContainer/button_container" unique_id=1224568265]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.03137255, 0.03137255, 0.03137255, 1)
+theme_override_fonts/font = ExtResource("1_xil51")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = ExtResource("3_jp8xn")
+theme_override_styles/pressed = ExtResource("3_jp8xn")
+theme_override_styles/hover = ExtResource("3_jp8xn")
+theme_override_styles/focus = ExtResource("3_jp8xn")
+text = "Warming up"
+alignment = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/button_container/course_select_button2" unique_id=1643652632]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.03137255, 0.03137255, 0.03137255, 1)
+theme_override_fonts/font = ExtResource("1_xil51")
+theme_override_styles/normal = ExtResource("4_d3fik")
+theme_override_styles/focus = ExtResource("4_d3fik")
+text = "Course"
+
+[node name="course_select_button3" type="Button" parent="VBoxContainer/MarginContainer/button_container" unique_id=2017977671]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.03137255, 0.03137255, 0.03137255, 1)
+theme_override_fonts/font = ExtResource("1_xil51")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = ExtResource("3_jp8xn")
+theme_override_styles/pressed = ExtResource("3_jp8xn")
+theme_override_styles/hover = ExtResource("3_jp8xn")
+theme_override_styles/focus = ExtResource("3_jp8xn")
+text = "Tricky"
+alignment = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/button_container/course_select_button3" unique_id=229348697]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.03137255, 0.03137255, 0.03137255, 1)
+theme_override_fonts/font = ExtResource("1_xil51")
+theme_override_styles/normal = ExtResource("4_d3fik")
+theme_override_styles/focus = ExtResource("4_d3fik")
+text = "Course"
+
+[node name="course_select_button4" type="Button" parent="VBoxContainer/MarginContainer/button_container" unique_id=437607640]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.03137255, 0.03137255, 0.03137255, 1)
+theme_override_fonts/font = ExtResource("1_xil51")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = ExtResource("3_jp8xn")
+theme_override_styles/pressed = ExtResource("3_jp8xn")
+theme_override_styles/hover = ExtResource("3_jp8xn")
+theme_override_styles/focus = ExtResource("3_jp8xn")
+text = "Challenge"
+alignment = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/button_container/course_select_button4" unique_id=543484070]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.03137255, 0.03137255, 0.03137255, 1)
+theme_override_fonts/font = ExtResource("1_xil51")
+theme_override_styles/normal = ExtResource("4_d3fik")
+theme_override_styles/focus = ExtResource("4_d3fik")
+text = "Course"
+
+[node name="course_select_button5" type="Button" parent="VBoxContainer/MarginContainer/button_container" unique_id=559057299]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.03137255, 0.03137255, 0.03137255, 1)
+theme_override_fonts/font = ExtResource("1_xil51")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = ExtResource("3_jp8xn")
+theme_override_styles/pressed = ExtResource("3_jp8xn")
+theme_override_styles/hover = ExtResource("3_jp8xn")
+theme_override_styles/focus = ExtResource("3_jp8xn")
+text = "Elegant"
+alignment = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/button_container/course_select_button5" unique_id=73440735]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.03137255, 0.03137255, 0.03137255, 1)
+theme_override_fonts/font = ExtResource("1_xil51")
+theme_override_styles/normal = ExtResource("4_d3fik")
+theme_override_styles/focus = ExtResource("4_d3fik")
+text = "Course"
+
+[node name="course_select_button6" type="Button" parent="VBoxContainer/MarginContainer/button_container" unique_id=307955889]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.03137255, 0.03137255, 0.03137255, 1)
+theme_override_fonts/font = ExtResource("1_xil51")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = ExtResource("3_jp8xn")
+theme_override_styles/pressed = ExtResource("3_jp8xn")
+theme_override_styles/hover = ExtResource("3_jp8xn")
+theme_override_styles/focus = ExtResource("3_jp8xn")
+text = "Difficult"
+alignment = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/button_container/course_select_button6" unique_id=1155588582]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.03137255, 0.03137255, 0.03137255, 1)
+theme_override_fonts/font = ExtResource("1_xil51")
+theme_override_styles/normal = ExtResource("4_d3fik")
+theme_override_styles/focus = ExtResource("4_d3fik")
+text = "Course"
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer" unique_id=361430452]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 45
+
+[node name="Panel3" type="Panel" parent="VBoxContainer/MarginContainer2" unique_id=800170722]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_574xi")
+
+[node name="Panel2" type="Panel" parent="VBoxContainer/MarginContainer2" unique_id=1881818960]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_o34mv")
+
+[node name="Panel" type="Panel" parent="VBoxContainer/MarginContainer2" unique_id=973874719]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_h83qs")
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer2" unique_id=1902264506]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.03137255, 0.03137255, 0.03137255, 1)
+theme_override_fonts/font = ExtResource("1_xil51")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_42oh2")
+theme_override_styles/focus = ExtResource("4_d3fik")
+text = "Beginner's Test"
+
+[node name="Label2" type="Label" parent="VBoxContainer/MarginContainer2" unique_id=1995790039]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.03137255, 0.03137255, 0.03137255, 1)
+theme_override_fonts/font = ExtResource("1_xil51")
+theme_override_styles/normal = ExtResource("4_d3fik")
+theme_override_styles/focus = ExtResource("4_d3fik")
+text = "Course"
+horizontal_alignment = 2
+
+[node name="container_level_select" type="MarginContainer" parent="VBoxContainer" unique_id=894239635]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_bottom = 15
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/container_level_select" unique_id=1664422855]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jp8xn")
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/container_level_select/PanelContainer" unique_id=1149823213]
+layout_mode = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 10
+
+[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer" unique_id=825757452]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="Panel3" type="Panel" parent="VBoxContainer/MarginContainer3" unique_id=243182153]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_574xi")
+
+[node name="Panel2" type="Panel" parent="VBoxContainer/MarginContainer3" unique_id=1883673628]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_o34mv")
+
+[node name="Panel" type="Panel" parent="VBoxContainer/MarginContainer3" unique_id=50439401]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_h83qs")
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer3" unique_id=1619819431]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.03137255, 0.03137255, 0.03137255, 1)
+theme_override_fonts/font = ExtResource("1_xil51")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_fhbyk")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_j6qju")
+text = "Level Code That's really long"
+
+[node name="Button" type="Button" parent="VBoxContainer" unique_id=1445505475]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Back"
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
