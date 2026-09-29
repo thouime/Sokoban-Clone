@@ -6,7 +6,7 @@ const SWITCH = preload("res://Entities/Objects/switch.tscn")
 
 var level_database: LevelDatabase
 var level_instance: Node
-var current_level := 2
+var current_level := 0
 
 var moveables: Array
 var past_turns: Array[Array]
@@ -15,8 +15,6 @@ var level_container: Node
 
 func _ready() -> void:
 	level_database = load("res://Stages/level_database.tres")
-	#level_container = get_tree().root.get_node("Main/LevelContainer")
-	#load_level()
 	
 func level_changed() -> void:
 	# set tilemap
@@ -32,12 +30,18 @@ func load_level() -> void:
 		level_instance.queue_free()
 	
 	level_instance = level_scene.instantiate()
+	
+	level_container = get_tree().root.get_node("Main/LevelContainer")
 	level_container.add_child(level_instance)
 	center_level(level_instance, get_viewport().get_visible_rect().size, 64)
 	
 	# Populate the map with player, boxes, and switches
 	spawn_entities()
-	
+
+# Load the next level in the array
+func next_level() -> void:
+	pass
+
 func spawn_entities() -> void:
 	for tile_map_layer in level_instance.get_children():
 		if not tile_map_layer is TileMapLayer:

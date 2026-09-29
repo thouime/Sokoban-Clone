@@ -4,6 +4,7 @@
 [ext_resource type="FontFile" uid="uid://c5apokn8h0eu3" path="res://Common/Assets/Fonts/PressStart2P.ttf" id="1_xil51"]
 [ext_resource type="StyleBox" uid="uid://brv4bowea035j" path="res://Common/UI/LevelSelect/level_select_course.tres" id="3_jp8xn"]
 [ext_resource type="StyleBox" uid="uid://b0m07i3s1rga2" path="res://Common/UI/LevelSelect/course_label.tres" id="4_d3fik"]
+[ext_resource type="Texture2D" uid="uid://2ht46f01ga2t" path="res://Common/Assets/Icons/finger_point.png" id="5_jp8xn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_574xi"]
 bg_color = Color(0.3882353, 0.09411765, 0.0627451, 1)
@@ -351,6 +352,11 @@ layout_mode = 2
 theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 columns = 10
+
+[node name="PointerIcon" type="TextureRect" parent="VBoxContainer/container_level_select/PanelContainer" unique_id=879049076]
+visible = false
+layout_mode = 2
+texture = ExtResource("5_jp8xn")
 
 [node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer" unique_id=825757452]
 layout_mode = 2
