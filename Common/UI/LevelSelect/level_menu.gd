@@ -14,7 +14,7 @@ func _ready() -> void:
 		printerr("Could not find level database.")
 		return
 		
-	var levels_array = level_database.levels_array
+	var levels_array = level_database.levels_array 
 	if not levels_array:
 		return
 	

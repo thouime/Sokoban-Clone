@@ -4,6 +4,7 @@
 [ext_resource type="FontFile" uid="uid://c5apokn8h0eu3" path="res://Common/Assets/Fonts/PressStart2P.ttf" id="1_xil51"]
 [ext_resource type="StyleBox" uid="uid://brv4bowea035j" path="res://Common/UI/LevelSelect/level_select_course.tres" id="3_jp8xn"]
 [ext_resource type="StyleBox" uid="uid://b0m07i3s1rga2" path="res://Common/UI/LevelSelect/course_label.tres" id="4_d3fik"]
+[ext_resource type="Texture2D" uid="uid://dy27rnmoefawy" path="res://Common/Assets/UI/cloud_spritesheet.png" id="5_d3fik"]
 [ext_resource type="Texture2D" uid="uid://2ht46f01ga2t" path="res://Common/Assets/Icons/finger_point.png" id="5_jp8xn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_574xi"]
@@ -57,6 +58,16 @@ content_margin_left = 0.0
 content_margin_top = 0.0
 content_margin_right = 150.0
 content_margin_bottom = 0.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3en5j"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+texture = ExtResource("5_d3fik")
+region_rect = Rect2(3, 0, 91, 45)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3en5j"]
+content_margin_left = 5.0
+content_margin_right = 5.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jp8xn"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -122,6 +133,10 @@ theme_override_constants/separation = 1
 [node name="course_select_button" type="Button" parent="VBoxContainer/MarginContainer/button_container" unique_id=940871112]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.03137255, 0.03137255, 0.03137255, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_xil51")
 theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = ExtResource("3_jp8xn")
@@ -152,6 +167,10 @@ text = "Course"
 [node name="course_select_button2" type="Button" parent="VBoxContainer/MarginContainer/button_container" unique_id=1224568265]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.03137255, 0.03137255, 0.03137255, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_xil51")
 theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = ExtResource("3_jp8xn")
@@ -182,6 +201,10 @@ text = "Course"
 [node name="course_select_button3" type="Button" parent="VBoxContainer/MarginContainer/button_container" unique_id=2017977671]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.03137255, 0.03137255, 0.03137255, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_xil51")
 theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = ExtResource("3_jp8xn")
@@ -212,6 +235,10 @@ text = "Course"
 [node name="course_select_button4" type="Button" parent="VBoxContainer/MarginContainer/button_container" unique_id=437607640]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.03137255, 0.03137255, 0.03137255, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_xil51")
 theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = ExtResource("3_jp8xn")
@@ -242,6 +269,10 @@ text = "Course"
 [node name="course_select_button5" type="Button" parent="VBoxContainer/MarginContainer/button_container" unique_id=559057299]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.03137255, 0.03137255, 0.03137255, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_xil51")
 theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = ExtResource("3_jp8xn")
@@ -272,6 +303,10 @@ text = "Course"
 [node name="course_select_button6" type="Button" parent="VBoxContainer/MarginContainer/button_container" unique_id=307955889]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.03137255, 0.03137255, 0.03137255, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_xil51")
 theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = ExtResource("3_jp8xn")
@@ -299,7 +334,11 @@ theme_override_styles/normal = ExtResource("4_d3fik")
 theme_override_styles/focus = ExtResource("4_d3fik")
 text = "Course"
 
-[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer" unique_id=361430452]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1327495768]
+layout_mode = 2
+alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer" unique_id=361430452]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -308,19 +347,19 @@ theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 45
 
-[node name="Panel3" type="Panel" parent="VBoxContainer/MarginContainer2" unique_id=800170722]
+[node name="Panel3" type="Panel" parent="VBoxContainer/HBoxContainer/MarginContainer2" unique_id=800170722]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_574xi")
 
-[node name="Panel2" type="Panel" parent="VBoxContainer/MarginContainer2" unique_id=1881818960]
+[node name="Panel2" type="Panel" parent="VBoxContainer/HBoxContainer/MarginContainer2" unique_id=1881818960]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_o34mv")
 
-[node name="Panel" type="Panel" parent="VBoxContainer/MarginContainer2" unique_id=973874719]
+[node name="Panel" type="Panel" parent="VBoxContainer/HBoxContainer/MarginContainer2" unique_id=973874719]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_h83qs")
 
-[node name="Label" type="Label" parent="VBoxContainer/MarginContainer2" unique_id=1902264506]
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer2" unique_id=1902264506]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.03137255, 0.03137255, 0.03137255, 1)
 theme_override_fonts/font = ExtResource("1_xil51")
@@ -328,7 +367,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_42oh2")
 theme_override_styles/focus = ExtResource("4_d3fik")
 text = "Beginner's Test"
 
-[node name="Label2" type="Label" parent="VBoxContainer/MarginContainer2" unique_id=1995790039]
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer2" unique_id=1995790039]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.03137255, 0.03137255, 0.03137255, 1)
 theme_override_fonts/font = ExtResource("1_xil51")
@@ -336,6 +375,24 @@ theme_override_styles/normal = ExtResource("4_d3fik")
 theme_override_styles/focus = ExtResource("4_d3fik")
 text = "Course"
 horizontal_alignment = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer" unique_id=272738860]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_3en5j")
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer/PanelContainer" unique_id=42322595]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/PanelContainer" unique_id=1357734396]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.03137255, 0.03137255, 0.03137255, 1)
+theme_override_fonts/font = ExtResource("1_xil51")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxEmpty_3en5j")
+text = "RB to 
+Increase Course
+Difficulty"
+horizontal_alignment = 1
 
 [node name="container_level_select" type="MarginContainer" parent="VBoxContainer" unique_id=894239635]
 layout_mode = 2
