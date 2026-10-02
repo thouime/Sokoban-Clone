@@ -50,7 +50,6 @@ func _on_button_focused(button: Button):
 			other_button.add_theme_color_override("icon_normal_color", Color(1, 1, 1, 0))
 	button.add_theme_color_override("icon_normal_color", Color(1, 1, 1, 1))
 
-
 func _on_level_select_button_pressed() -> void:
 	# load level selector
 	get_tree().change_scene_to_file("res://Common/UI/LevelSelect/level_menu.tscn")

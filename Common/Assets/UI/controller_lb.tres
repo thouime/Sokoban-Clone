@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" format=3 uid="uid://b2pqj8yog3ddo"]
+
+[ext_resource type="Texture2D" uid="uid://cse27jrhbi5yj" path="res://Common/Assets/UI/buttons_tilemap.png" id="1_sihm3"]
+
+[resource]
+atlas = ExtResource("1_sihm3")
+region = Rect2(153, 289, 16, 15)
