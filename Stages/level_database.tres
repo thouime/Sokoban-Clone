@@ -2,10 +2,11 @@
 
 [ext_resource type="Script" uid="uid://bt06g6ncljed0" path="res://Stages/level_data.gd" id="1_ayq8v"]
 [ext_resource type="Script" uid="uid://c3rngtdmdn6yt" path="res://Stages/level_database.gd" id="2_8w28l"]
-[ext_resource type="Resource" uid="uid://c7chkhm2ge7dh" path="res://Stages/levels/level_01.tres" id="2_sxb2m"]
-[ext_resource type="Resource" uid="uid://dsklxis1ljpeu" path="res://Stages/levels/level_02.tres" id="3_sxb2m"]
+[ext_resource type="Resource" uid="uid://c7chkhm2ge7dh" path="res://Stages/Levels/Beginner/level_c1_01.tres" id="2_qf5jc"]
+[ext_resource type="Resource" uid="uid://dsklxis1ljpeu" path="res://Stages/Levels/Beginner/level_c1_02.tres" id="3_l3ibm"]
+[ext_resource type="Resource" uid="uid://cj66i7t21sro6" path="res://Stages/Levels/WarmingUp/level_c2_01.tres" id="4_kk3fm"]
 
 [resource]
 script = ExtResource("2_8w28l")
-levels_array = Array[ExtResource("1_ayq8v")]([ExtResource("2_sxb2m"), ExtResource("3_sxb2m")])
+levels_array = Array[ExtResource("1_ayq8v")]([ExtResource("2_qf5jc"), ExtResource("3_l3ibm"), ExtResource("4_kk3fm")])
 metadata/_custom_type_script = "uid://c3rngtdmdn6yt"

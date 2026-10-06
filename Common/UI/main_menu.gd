@@ -11,19 +11,8 @@ var current_input_method := InputMethod.MOUSE
 @onready var level_editor_button: Button = $HBoxContainer/MarginContainer/button_container/level_editor_button
 
 func _ready() -> void:
-	for button in button_container.get_children():
-		if button is Button:
-			button.focus_entered.connect(_on_button_focused.bind(button))
-			#button.focus_exited.connect(_on_button_unfocused.bind(button))
-			button.mouse_entered.connect(_on_button_mouse_entered.bind(button))
-			button.icon = pointer_icon
-			var icon_width = int(button.size.y)  # matches your icon_max_width value
-			var style = button.get_theme_stylebox("normal") as StyleBoxFlat
-			if style:
-				style.content_margin_right += icon_width
-			button.add_theme_color_override(
-				"icon_normal_color", Color(1, 1, 1, 0)
-			)
+	setup_icons()
+	InputManager.input_method_changed.connect(_on_input_method_changed)
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -34,9 +23,28 @@ func _input(event: InputEvent) -> void:
 		or event.is_action_pressed("ui_accept"):
 		current_input_method = InputMethod.KEYBOARD_CONTROLLER
 
+func setup_icons() -> void:
+	for button in button_container.get_children():
+		if button is not Button:
+			continue
+		button.focus_entered.connect(_on_button_focused.bind(button))
+		button.mouse_entered.connect(_on_button_mouse_entered.bind(button))
+		button.icon = pointer_icon
+		var icon_width = int(button.size.y)  # matches your icon_max_width value
+		var style = button.get_theme_stylebox("normal") as StyleBoxFlat
+		if style:
+			style.content_margin_right += icon_width
+		button.add_theme_color_override(
+			"icon_normal_color", Color(1, 1, 1, 0)
+		)
+	# Default focus on first button
+	button_container.get_child(0).grab_focus()
+
 func _check_hover_focus():
 	for button in button_container.get_children():
-		if button is Button and button.get_global_rect().has_point(get_global_mouse_position()):
+		if button is Button and button.get_global_rect().has_point(
+			get_global_mouse_position()
+		):
 			button.grab_focus()
 			return
 
@@ -49,6 +57,22 @@ func _on_button_focused(button: Button):
 		if other_button is Button:
 			other_button.add_theme_color_override("icon_normal_color", Color(1, 1, 1, 0))
 	button.add_theme_color_override("icon_normal_color", Color(1, 1, 1, 1))
+
+func _on_input_method_changed(input: InputManager.InputMethod) -> void:
+	if input == InputManager.InputMethod.MKB:
+		enable_mouse_interaction()
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	elif input == InputManager.InputMethod.CONTROLLER:
+		disable_mouse_interaction()
+		Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+
+func disable_mouse_interaction() -> void:
+	for button in button_container.get_children():
+		button.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+func enable_mouse_interaction() -> void:
+	for button in button_container.get_children():
+		button.mouse_filter = Control.MOUSE_FILTER_STOP
 
 func _on_level_select_button_pressed() -> void:
 	# load level selector
