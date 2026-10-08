@@ -1,18 +1,24 @@
 [gd_scene format=3 uid="uid://curnnjtqd7022"]
 
-[ext_resource type="Texture2D" uid="uid://2ht46f01ga2t" path="res://Common/Assets/Icons/finger_point.png" id="1_1kevw"]
+[ext_resource type="Texture2D" uid="uid://bbj7ov1fedr78" path="res://Common/Assets/Icons/finger_point.png" id="1_1kevw"]
 [ext_resource type="Theme" uid="uid://cqs6k7ng5ddwn" path="res://Common/UI/menu_theme.tres" id="1_c2tq6"]
 [ext_resource type="Script" uid="uid://cvihyi5cif6ak" path="res://Common/UI/main_menu.gd" id="1_g1wmj"]
 [ext_resource type="StyleBox" uid="uid://bgp06upi6ul74" path="res://Common/UI/new_style_box_empty.tres" id="4_6n030"]
+[ext_resource type="Shader" uid="uid://brmhl0dio4okx" path="res://Common/UI/animated_bg.gdshader" id="4_d7tdu"]
 [ext_resource type="Texture2D" uid="uid://cvj25kqb6kjpp" path="res://Common/Assets/menu_logo.png" id="4_qc5ww"]
 
-[sub_resource type="Gradient" id="Gradient_d7tdu"]
-colors = PackedColorArray(0.5803922, 0.15686275, 0.87058824, 1, 1, 0.31764707, 0.70980394, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p5vlc"]
+shader = ExtResource("4_d7tdu")
+shader_parameter/scroll_speed = 0.150000007125
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_3en5j"]
+[sub_resource type="Gradient" id="Gradient_d7tdu"]
+offsets = PackedFloat32Array(0, 0.15, 0.30483273, 0.5, 0.669145, 0.85, 1)
+colors = PackedColorArray(0.41960785, 0, 0.7764706, 1, 0.67919254, 0.014031609, 0.61686105, 1, 0.81347525, 0.021290135, 0.5342953, 1, 0.9827392, 0.030439537, 0.43022087, 1, 0.83199704, 0.02229131, 0.52290696, 1, 0.6708189, 0.013578976, 0.62200975, 1, 0.41960785, 0, 0.7764706, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_d7tdu"]
 gradient = SubResource("Gradient_d7tdu")
 width = 20
-height = 20
+height = 40
 fill_from = Vector2(0.5, 0)
 fill_to = Vector2(0.5, 1)
 
@@ -78,9 +84,15 @@ theme_override_constants/margin_bottom = 0
 script = ExtResource("1_g1wmj")
 pointer_icon = ExtResource("1_1kevw")
 
-[node name="bg_gradient" type="TextureRect" parent="." unique_id=1004291571]
+[node name="Control" type="Control" parent="." unique_id=1644528062]
 layout_mode = 2
-texture = SubResource("GradientTexture2D_3en5j")
+
+[node name="bg_gradient" type="TextureRect" parent="Control" unique_id=1004291571]
+material = SubResource("ShaderMaterial_p5vlc")
+layout_mode = 0
+offset_right = 1024.0
+offset_bottom = 1500.0
+texture = SubResource("GradientTexture2D_d7tdu")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2056927348]
 layout_mode = 2
