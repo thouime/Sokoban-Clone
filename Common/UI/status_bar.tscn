@@ -1,0 +1,138 @@
+[gd_scene format=3 uid="uid://dudl74rxbuckm"]
+
+[ext_resource type="FontFile" uid="uid://c5apokn8h0eu3" path="res://Common/Assets/Fonts/PressStart2P.ttf" id="1_w4sbx"]
+[ext_resource type="Script" uid="uid://clidpyg8qjnjc" path="res://Common/UI/status_bar.gd" id="1_xlmjd"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_72f1l"]
+blend_mode = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3en5j"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_72f1l"]
+bg_color = Color(0.44313726, 0, 0, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.7411765, 0.5254902, 0.2901961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e1wp7"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_color = Color(0.80784315, 0.68235296, 0.6117647, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wb45j"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.7411765, 0.5254902, 0.2901961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q7apq"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.80784315, 0.68235296, 0.6117647, 1)
+
+[node name="StatusBar" type="MarginContainer" unique_id=1163760540]
+offset_right = 148.0
+offset_bottom = 48.0
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+script = ExtResource("1_xlmjd")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=819558039]
+material = SubResource("CanvasItemMaterial_72f1l")
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3en5j")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=2098557270]
+self_modulate = Color(0.44313726, 0, 0, 1)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/separation = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer" unique_id=161032180]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_72f1l")
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/PanelContainer" unique_id=2127765571]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_e1wp7")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/PanelContainer/PanelContainer" unique_id=1249455032]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="StageLabel" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer/PanelContainer/HBoxContainer" unique_id=1162247663]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 1, 0.6117647, 1)
+theme_override_fonts/font = ExtResource("1_w4sbx")
+text = "STAGE"
+
+[node name="StageNum" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer/PanelContainer/HBoxContainer" unique_id=882491242]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.87058824, 0.8745098, 0.87058824, 1)
+theme_override_fonts/font = ExtResource("1_w4sbx")
+text = "01"
+horizontal_alignment = 2
+
+[node name="PanelContainer2" type="PanelContainer" parent="PanelContainer/VBoxContainer" unique_id=93981404]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wb45j")
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/PanelContainer2" unique_id=446620145]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_q7apq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/PanelContainer" unique_id=1956047037]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/PanelContainer/VBoxContainer" unique_id=1495246289]
+layout_mode = 2
+
+[node name="StepLabel" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer2/PanelContainer/VBoxContainer/HBoxContainer2" unique_id=1900388951]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0.6117647, 1)
+theme_override_fonts/font = ExtResource("1_w4sbx")
+text = "STEP"
+
+[node name="StepNum" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer2/PanelContainer/VBoxContainer/HBoxContainer2" unique_id=2036499130]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.87058824, 0.8745098, 0.87058824, 1)
+theme_override_fonts/font = ExtResource("1_w4sbx")
+text = "0000"
+horizontal_alignment = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/PanelContainer/VBoxContainer" unique_id=466575777]
+layout_mode = 2
+
+[node name="LimitLabel" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer2/PanelContainer/VBoxContainer/HBoxContainer3" unique_id=242360945]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0.6117647, 1)
+theme_override_fonts/font = ExtResource("1_w4sbx")
+text = "LIMIT"
+
+[node name="LimitNum" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer2/PanelContainer/VBoxContainer/HBoxContainer3" unique_id=2052995143]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.87058824, 0.8745098, 0.87058824, 1)
+theme_override_fonts/font = ExtResource("1_w4sbx")
+text = "0120"
+horizontal_alignment = 2

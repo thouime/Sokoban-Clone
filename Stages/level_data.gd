@@ -13,5 +13,6 @@ enum Category {
 @export var level_name: String
 @export var least_moves: int = -1
 @export var best_moves: int = -1
+@export var move_limit: int = 50
 
 var completed: bool = false

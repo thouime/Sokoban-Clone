@@ -6,6 +6,6 @@
 [resource]
 script = ExtResource("1_1tgtr")
 scene = ExtResource("1_3gmvu")
-difficulty = "Beginner's Test"
 level_name = "Level 02"
+move_limit = 120
 metadata/_custom_type_script = "uid://bt06g6ncljed0"

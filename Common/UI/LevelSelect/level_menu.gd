@@ -87,7 +87,6 @@ func populate_level_buttons() -> void:
 
 func set_pointers() -> void:
 	for category in category_containers:
-		var container = category_containers[category]
 		level_pointer_icon.top_level = true
 		level_pointer_icon.visible = false
 		level_pointer_icon.mouse_filter = Control.MOUSE_FILTER_IGNORE

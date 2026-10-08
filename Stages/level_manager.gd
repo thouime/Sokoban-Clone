@@ -5,13 +5,18 @@ const BOX = preload("res://Entities/Objects/box.tscn")
 const SWITCH = preload("res://Entities/Objects/switch.tscn")
 
 var level_database: LevelDatabase
+var level_data: LevelData
 var level_instance: Node
+
 var current_level := 0
+var num_steps := 0
 
 var moveables: Array
 var past_turns: Array[Array]
 
 var level_container: Node
+var status_bar: MarginContainer
+
 
 func _ready() -> void:
 	level_database = load("res://Stages/level_database.tres")
@@ -21,7 +26,8 @@ func level_changed() -> void:
 	past_turns.clear()
 
 func load_level() -> void:
-	var level_scene: PackedScene = level_database.get_level(current_level)
+	level_data = level_database.get_data(current_level)
+	var level_scene: PackedScene = level_data.scene
 	if not level_scene:
 		printerr("Level not found!")
 		return
@@ -33,6 +39,10 @@ func load_level() -> void:
 	
 	level_container = get_tree().root.get_node("Main/LevelContainer")
 	level_container.add_child(level_instance)
+	
+	status_bar = get_tree().root.get_node("Main/UserInterface/StatusBar")
+	set_status_bar()
+	
 	center_level(level_instance, get_viewport().get_visible_rect().size, 64)
 	
 	# Populate the map with player, boxes, and switches
@@ -41,6 +51,10 @@ func load_level() -> void:
 # Load the next level in the array
 func next_level() -> void:
 	pass
+
+func set_status_bar() -> void:
+	status_bar.set_stage_num(current_level)
+	status_bar.set_limit_num(level_data.move_limit)
 
 func spawn_entities() -> void:
 	for tile_map_layer in level_instance.get_children():
@@ -108,20 +122,29 @@ func add_move_to_turn(node: Moveable, direction: Vector2i) -> void:
 	var move := Move.new()
 	move.node = node
 	move.direction = direction
+	if move.node is Player:
+		add_step(1)
 	past_turns.back().append(move)
 
 func undo_last_move() -> void:
-	if !past_turns.is_empty():
-		var last_moves: Array = past_turns.pop_back()
-		for move: Move in last_moves:
-			var node = move.node
-			if node.has_method("reverse_animation"):
-				node.reverse_animation(move.direction)
-			node.set_movement(-move.direction)
-			node.set_target(node.get_tile_position(), node.direction)
+	if past_turns.is_empty():
+		return
+	var last_moves: Array = past_turns.pop_back()
+	for move: Move in last_moves:
+		var node = move.node
+		if node.has_method("reverse_animation"):
+			node.reverse_animation(move.direction)
+		if node is Player:
+			add_step(-1)
+		node.set_movement(-move.direction)
+		node.set_target(node.get_tile_position(), node.direction)
 
 func _on_switch_changed() -> void:
 	check_win_condition.call_deferred()
+
+func add_step(step: int) -> void:
+	num_steps += step
+	status_bar.set_step_num(num_steps)
 
 func check_win_condition() -> void:
 	var switches = get_tree().get_nodes_in_group("switches")
