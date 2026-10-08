@@ -8,5 +8,6 @@ script = ExtResource("1_gd5nt")
 scene = ExtResource("1_7jv3x")
 category = 1
 level_name = "Level 01"
+level_num = 1
 move_limit = 120
 metadata/_custom_type_script = "uid://bt06g6ncljed0"

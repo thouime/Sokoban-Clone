@@ -74,9 +74,12 @@ func populate_level_buttons() -> void:
 		var buttons: Array = []
 		
 		for level in levels:
-			var global_index = level_database.levels_array.find(level) + 1
 			var level_button = LEVEL_BUTTON.instantiate()
-			level_button.set_button(level.level_name, global_index, level.scene)
+			level_button.set_button(
+				level.level_name,
+				level.level_num, 
+				level.scene
+			)
 			level_button.mouse_entered.connect(
 				position_level_pointer.bind(level_button)
 			)
