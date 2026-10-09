@@ -5,14 +5,18 @@ extends MarginContainer
 enum InputMethod { MOUSE, KEYBOARD_CONTROLLER }
 var current_input_method := InputMethod.MOUSE
 
-@onready var button_container: VBoxContainer = $HBoxContainer/MarginContainer/button_container
-@onready var level_select_button: Button = $HBoxContainer/MarginContainer/button_container/level_select_button
-@onready var versus_button: Button = $HBoxContainer/MarginContainer/button_container/versus_button
-@onready var level_editor_button: Button = $HBoxContainer/MarginContainer/button_container/level_editor_button
+@onready var copyright_container: VBoxContainer = $VBoxContainer
+@onready var selection_container: MarginContainer = $HBoxContainer/SelectionContainer
+@onready var logo: TextureRect = $HBoxContainer/Logo
+@onready var button_container: VBoxContainer = $HBoxContainer/SelectionContainer/button_container
+@onready var level_select_button: Button = $HBoxContainer/SelectionContainer/button_container/level_select_button
+@onready var versus_button: Button = $HBoxContainer/SelectionContainer/button_container/versus_button
+@onready var level_editor_button: Button = $HBoxContainer/SelectionContainer/button_container/level_editor_button
 
 func _ready() -> void:
 	setup_icons()
 	InputManager.input_method_changed.connect(_on_input_method_changed)
+	logo_animation()
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -40,6 +44,20 @@ func setup_icons() -> void:
 	# Default focus on first button
 	button_container.get_child(0).grab_focus()
 
+func logo_animation() -> void:
+	await get_tree().create_timer(1.0).timeout
+	var logo_tween = create_tween()
+	logo_tween.tween_property(
+		logo, "offset_transform_position:y", 
+		0, 1
+	)
+	logo_tween.finished.connect(_on_animation_finished)
+	
+# on animation done
+func _on_animation_finished() -> void:
+	selection_container.visible = true
+	copyright_container.visible = true
+
 func _check_hover_focus():
 	for button in button_container.get_children():
 		if button is Button and button.get_global_rect().has_point(
@@ -58,14 +76,6 @@ func _on_button_focused(button: Button):
 			other_button.add_theme_color_override("icon_normal_color", Color(1, 1, 1, 0))
 	button.add_theme_color_override("icon_normal_color", Color(1, 1, 1, 1))
 
-func _on_input_method_changed(input: InputManager.InputMethod) -> void:
-	if input == InputManager.InputMethod.MKB:
-		enable_mouse_interaction()
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	elif input == InputManager.InputMethod.CONTROLLER:
-		disable_mouse_interaction()
-		Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
-
 func disable_mouse_interaction() -> void:
 	for button in button_container.get_children():
 		button.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -73,6 +83,14 @@ func disable_mouse_interaction() -> void:
 func enable_mouse_interaction() -> void:
 	for button in button_container.get_children():
 		button.mouse_filter = Control.MOUSE_FILTER_STOP
+
+func _on_input_method_changed(input: InputManager.InputMethod) -> void:
+	if input == InputManager.InputMethod.MKB:
+		enable_mouse_interaction()
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	elif input == InputManager.InputMethod.CONTROLLER:
+		disable_mouse_interaction()
+		Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 
 func _on_level_select_button_pressed() -> void:
 	# load level selector

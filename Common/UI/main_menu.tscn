@@ -95,6 +95,7 @@ offset_bottom = 1500.0
 texture = SubResource("GradientTexture2D_d7tdu")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2056927348]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
@@ -119,10 +120,13 @@ size_flags_horizontal = 4
 
 [node name="Logo" type="TextureRect" parent="HBoxContainer" unique_id=17024403]
 layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, 150)
 texture = ExtResource("4_qc5ww")
 stretch_mode = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer" unique_id=171188817]
+[node name="SelectionContainer" type="MarginContainer" parent="HBoxContainer" unique_id=171188817]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -131,24 +135,24 @@ theme_override_constants/margin_top = 25
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 50
 
-[node name="Panel3" type="Panel" parent="HBoxContainer/MarginContainer" unique_id=1228789091]
+[node name="Panel3" type="Panel" parent="HBoxContainer/SelectionContainer" unique_id=1228789091]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_6n030")
 
-[node name="Panel2" type="Panel" parent="HBoxContainer/MarginContainer" unique_id=1127460436]
+[node name="Panel2" type="Panel" parent="HBoxContainer/SelectionContainer" unique_id=1127460436]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_72f1l")
 
-[node name="Panel" type="Panel" parent="HBoxContainer/MarginContainer" unique_id=2107622802]
+[node name="Panel" type="Panel" parent="HBoxContainer/SelectionContainer" unique_id=2107622802]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_qc5ww")
 
-[node name="button_container" type="VBoxContainer" parent="HBoxContainer/MarginContainer" unique_id=1457213089]
+[node name="button_container" type="VBoxContainer" parent="HBoxContainer/SelectionContainer" unique_id=1457213089]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 10
 
-[node name="level_select_button" type="Button" parent="HBoxContainer/MarginContainer/button_container" unique_id=1961828452]
+[node name="level_select_button" type="Button" parent="HBoxContainer/SelectionContainer/button_container" unique_id=1961828452]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.03137255, 0.03137255, 0.03137255, 1)
 theme_override_font_sizes/font_size = 32
@@ -159,7 +163,7 @@ theme_override_styles/focus = ExtResource("4_6n030")
 text = "Super Sokoban"
 alignment = 0
 
-[node name="versus_button" type="Button" parent="HBoxContainer/MarginContainer/button_container" unique_id=1617404347]
+[node name="versus_button" type="Button" parent="HBoxContainer/SelectionContainer/button_container" unique_id=1617404347]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = ExtResource("4_6n030")
@@ -169,7 +173,7 @@ theme_override_styles/focus = ExtResource("4_6n030")
 text = "Versus Sokoban"
 alignment = 0
 
-[node name="level_editor_button" type="Button" parent="HBoxContainer/MarginContainer/button_container" unique_id=1294698348]
+[node name="level_editor_button" type="Button" parent="HBoxContainer/SelectionContainer/button_container" unique_id=1294698348]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = ExtResource("4_6n030")
@@ -179,4 +183,4 @@ theme_override_styles/focus = ExtResource("4_6n030")
 text = "Sokoban Editor"
 alignment = 0
 
-[connection signal="pressed" from="HBoxContainer/MarginContainer/button_container/level_select_button" to="." method="_on_level_select_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/SelectionContainer/button_container/level_select_button" to="." method="_on_level_select_button_pressed"]
