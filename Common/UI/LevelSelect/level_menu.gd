@@ -29,12 +29,12 @@ var input_actions: Dictionary = {}
 var is_switching_categories := false
 
 @onready var category_containers: Dictionary = {
-	LevelData.Category.BEGINNERS_TEST: $VBoxContainer/category_container/container_level_select,
-	LevelData.Category.WARMING_UP: $VBoxContainer/category_container/container_level_select2,
-	LevelData.Category.TRICKY: $VBoxContainer/category_container/container_level_select3,
-	LevelData.Category.CHALLENGING: $VBoxContainer/category_container/container_level_select4,
-	LevelData.Category.ELEGANT: $VBoxContainer/category_container/container_level_select5,
-	LevelData.Category.DIFFICULT: $VBoxContainer/category_container/container_level_select6,
+	LevelDatabase.Category.BEGINNERS_TEST: $VBoxContainer/category_container/container_level_select,
+	LevelDatabase.Category.WARMING_UP: $VBoxContainer/category_container/container_level_select2,
+	LevelDatabase.Category.TRICKY: $VBoxContainer/category_container/container_level_select3,
+	LevelDatabase.Category.CHALLENGING: $VBoxContainer/category_container/container_level_select4,
+	LevelDatabase.Category.ELEGANT: $VBoxContainer/category_container/container_level_select5,
+	LevelDatabase.Category.DIFFICULT: $VBoxContainer/category_container/container_level_select6,
 }
 @onready var category_pointers: Dictionary = {}
 @onready var button_container: VBoxContainer = $VBoxContainer/MarginContainer/button_container
@@ -47,8 +47,10 @@ func _ready() -> void:
 	if not level_database:
 		printerr("Could not find level database.")
 		return
-		
-	var levels_array = level_database.levels_array 
+	
+	var levels_array = level_database.get_levels_category(
+		LevelManager.current_category
+	)
 	if not levels_array:
 		return
 	
@@ -66,14 +68,17 @@ func populate_level_buttons() -> void:
 	var level_database = LevelManager.level_database
 	
 	for category in LevelData.Category.values():
+		print("Category: ", category)
 		var container = category_containers[category]
 		var grid: GridContainer = container.get_node(
 			"PanelContainer/GridContainer"
 		)
 		var levels = level_database.get_levels_category(category)
 		var buttons: Array = []
+		print("Levels: ", levels)
 		
 		for level in levels:
+			print("Button Level: ", level)
 			var level_button = LEVEL_BUTTON.instantiate()
 			level_button.set_button(
 				level.level_name,
@@ -166,8 +171,8 @@ func setup_pointer_icon():
 		if category_buttons.size() > 0:
 			set_icon_visible(category_buttons[0], true)
 
-func set_icon_visible(button: Button, is_visible: bool) -> void:
-	var alpha = 1.0 if is_visible else 0.0
+func set_icon_visible(button: Button, icon_visible: bool) -> void:
+	var alpha = 1.0 if icon_visible else 0.0
 	var button_states = [
 		"icon_normal_color", 
 		"icon_hover_color", 
@@ -176,7 +181,7 @@ func set_icon_visible(button: Button, is_visible: bool) -> void:
 	]
 	for state in button_states:
 		button.add_theme_color_override(state, Color(1, 1, 1, alpha))
-	if is_visible:
+	if icon_visible:
 		var focus_color = button.get_theme_color("font_focus_color")
 		button.add_theme_color_override("font_color", focus_color)
 	else:
@@ -227,6 +232,11 @@ func switch_category(direction: int) -> void:
 
 	level_buttons = levels_by_category[category]
 	current_level_index = 0
+	
+	var current_category = LevelManager.current_category
+	var category_size = LevelDatabase.Category.size()
+	current_category = clampi(current_category + direction, 0, category_size - 1)
+	LevelManager.current_category = current_category
 
 func slide_category(
 	previous_category: MarginContainer, 

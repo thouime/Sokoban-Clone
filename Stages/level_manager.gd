@@ -1,5 +1,7 @@
 extends Node
 
+signal level_loaded
+
 const PLAYER = preload("res://Entities/Player/player.tscn")
 const BOX = preload("res://Entities/Objects/box.tscn")
 const SWITCH = preload("res://Entities/Objects/switch.tscn")
@@ -8,8 +10,10 @@ var level_database: LevelDatabase
 var level_data: LevelData
 var level_instance: Node
 
+var current_category: LevelDatabase.Category = 0
 var current_level := 0
 var num_steps := 0
+var move_limit := -1
 
 var moveables: Array
 var past_turns: Array[Array]
@@ -17,16 +21,35 @@ var past_turns: Array[Array]
 var level_container: Node
 var status_bar: MarginContainer
 
+var game_over_screen: MarginContainer
+var game_over_active := false
+var game_over_time := 0.0
 
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	level_loaded.connect(level_changed)
 	level_database = load("res://Stages/level_database.tres")
-	
+
+func _process(delta: float) -> void:
+	if not game_over_active:
+		return
+	game_over_time += delta
+	if game_over_time >= 5.0:
+		restart_level()
+
+func _input(event: InputEvent) -> void:
+	if not game_over_active or game_over_time < 1.0:
+		return
+	if event.is_pressed() or not event.is_echo():
+		restart_level()
+
 func level_changed() -> void:
-	# set tilemap
+	game_over_screen.visible = false
 	past_turns.clear()
+	num_steps = 0
 
 func load_level() -> void:
-	level_data = level_database.get_data(current_level)
+	level_data = level_database.get_data(current_category, current_level)
 	var level_scene: PackedScene = level_data.scene
 	if not level_scene:
 		printerr("Level not found!")
@@ -40,13 +63,21 @@ func load_level() -> void:
 	level_container = get_tree().root.get_node("Main/LevelContainer")
 	level_container.add_child(level_instance)
 	
+	move_limit = level_data.move_limit
 	status_bar = get_tree().root.get_node("Main/UserInterface/StatusBar")
+	game_over_screen = get_tree().root.get_node("Main/UserInterface/GameOverScreen")
 	set_status_bar()
 	
-	center_level(level_instance, get_viewport().get_visible_rect().size, 64)
+	#center_level(level_instance, get_viewport().get_visible_rect().size, 64)
 	
 	# Populate the map with player, boxes, and switches
 	spawn_entities()
+	level_loaded.emit()
+
+func restart_level() -> void:
+	game_over_active = false
+	get_tree().paused = false
+	load_level()
 
 # Load the next level in the array
 func next_level() -> void:
@@ -144,8 +175,20 @@ func _on_switch_changed() -> void:
 
 func add_step(step: int) -> void:
 	num_steps += step
+	if check_move_limit(num_steps):
+		game_over()
+		return
 	status_bar.set_step_num(num_steps)
 
+func check_move_limit(steps: int) -> bool:
+	return steps > move_limit
+
+func game_over() -> void:
+	game_over_screen.show()
+	get_tree().paused = true
+	game_over_active = true
+	game_over_time = 0.0
+	
 func check_win_condition() -> void:
 	var switches = get_tree().get_nodes_in_group("switches")
 	var boxes = get_tree().get_nodes_in_group("boxes")

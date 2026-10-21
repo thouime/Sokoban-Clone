@@ -45,11 +45,15 @@ border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0.80784315, 0.68235296, 0.6117647, 1)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3en5j"]
+size = Vector2(162, 73)
+
 [node name="StatusBar" type="MarginContainer" unique_id=1163760540]
-offset_right = 148.0
-offset_bottom = 48.0
+offset_right = 212.0
+offset_bottom = 123.0
 theme_override_constants/margin_left = 50
 theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
 script = ExtResource("1_xlmjd")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=819558039]
@@ -136,3 +140,10 @@ theme_override_colors/font_color = Color(0.87058824, 0.8745098, 0.87058824, 1)
 theme_override_fonts/font = ExtResource("1_w4sbx")
 text = "0120"
 horizontal_alignment = 2
+
+[node name="Area2D" type="Area2D" parent="PanelContainer" unique_id=1922170968]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PanelContainer/Area2D" unique_id=21118701]
+position = Vector2(81, 36.5)
+shape = SubResource("RectangleShape2D_3en5j")

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d20or5n2p3fv8" path="res://Stages/main.gd" id="1_n1pa2"]
 [ext_resource type="PackedScene" uid="uid://dudl74rxbuckm" path="res://Common/UI/status_bar.tscn" id="2_lxwtg"]
+[ext_resource type="PackedScene" uid="uid://cmnxwr730eae" path="res://Common/UI/GameOverScreen.tscn" id="3_dqdwq"]
 
 [sub_resource type="Gradient" id="Gradient_kerj0"]
 interpolation_mode = 2
@@ -24,5 +25,6 @@ texture = SubResource("GradientTexture2D_72f1l")
 [node name="UserInterface" type="CanvasLayer" parent="." unique_id=68400816]
 
 [node name="StatusBar" parent="UserInterface" unique_id=1163760540 instance=ExtResource("2_lxwtg")]
-offset_right = 212.0
-offset_bottom = 123.0
+
+[node name="GameOverScreen" parent="UserInterface" unique_id=1708651107 instance=ExtResource("3_dqdwq")]
+visible = false

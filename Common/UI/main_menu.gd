@@ -53,7 +53,6 @@ func logo_animation() -> void:
 	)
 	logo_tween.finished.connect(_on_animation_finished)
 	
-# on animation done
 func _on_animation_finished() -> void:
 	selection_container.visible = true
 	copyright_container.visible = true

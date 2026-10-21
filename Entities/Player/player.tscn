@@ -110,6 +110,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3en5j"]
+size = Vector2(128, 128)
+
 [node name="Player" type="Node2D" unique_id=615572103]
 z_index = 3
 script = ExtResource("1_fh1qw")
@@ -121,20 +124,31 @@ animation = &"down"
 frame_progress = 0.40870205
 
 [node name="RayCastDown" type="RayCast2D" parent="." unique_id=1127419151]
-collision_mask = 6
+collision_mask = 22
 hit_from_inside = true
+collide_with_areas = true
 
 [node name="RayCastUp" type="RayCast2D" parent="." unique_id=1808243284]
 target_position = Vector2(0, -50)
-collision_mask = 6
+collision_mask = 22
 hit_from_inside = true
+collide_with_areas = true
 
 [node name="RayCastRight" type="RayCast2D" parent="." unique_id=2096416324]
 target_position = Vector2(50, 0)
-collision_mask = 6
+collision_mask = 22
 hit_from_inside = true
+collide_with_areas = true
 
 [node name="RayCastLeft" type="RayCast2D" parent="." unique_id=119070553]
 target_position = Vector2(-50, 0)
-collision_mask = 6
+collision_mask = 22
 hit_from_inside = true
+collide_with_areas = true
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=531082467]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=169773771]
+position = Vector2(-1, -2.5)
+shape = SubResource("RectangleShape2D_3en5j")

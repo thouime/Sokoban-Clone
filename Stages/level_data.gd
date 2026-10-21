@@ -1,7 +1,6 @@
 class_name LevelData
 extends Resource
 
-
 enum Category { 
 	BEGINNERS_TEST, WARMING_UP, 
 	TRICKY, CHALLENGING, 
