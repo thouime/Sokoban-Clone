@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://c2heqke7cy23k"]
+
+[ext_resource type="Script" uid="uid://cyay1ji3imxk3" path="res://Common/UI/canvas_layer.gd" id="1_4ixm6"]
+[ext_resource type="Shader" uid="uid://bo7v5b13qote0" path="res://Common/UI/mosaic_effect.gdshader" id="2_ytrci"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d7tdu"]
+shader = ExtResource("2_ytrci")
+shader_parameter/block_size = 1.0
+shader_parameter/fade = 0.0
+
+[node name="MosaicEffect" type="CanvasLayer" unique_id=788479317]
+script = ExtResource("1_4ixm6")
+transition_time = 1.0
+
+[node name="Fade" type="ColorRect" parent="." unique_id=1485492056]
+material = SubResource("ShaderMaterial_d7tdu")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

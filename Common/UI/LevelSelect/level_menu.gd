@@ -48,6 +48,8 @@ func _ready() -> void:
 		printerr("Could not find level database.")
 		return
 	
+	LevelManager.add_mosaic(self)
+	
 	var levels_array = level_database.get_levels_category(
 		LevelManager.current_category
 	)
@@ -63,22 +65,21 @@ func _ready() -> void:
 	set_input_icons(InputManager.current_input)
 	show_default_category()
 	select_level.call_deferred(0)
+	await LevelManager.mosaic_in(self)
+	LevelManager.current_scene = self
 
 func populate_level_buttons() -> void:
 	var level_database = LevelManager.level_database
 	
 	for category in LevelData.Category.values():
-		print("Category: ", category)
 		var container = category_containers[category]
 		var grid: GridContainer = container.get_node(
 			"PanelContainer/GridContainer"
 		)
 		var levels = level_database.get_levels_category(category)
 		var buttons: Array = []
-		print("Levels: ", levels)
 		
 		for level in levels:
-			print("Button Level: ", level)
 			var level_button = LEVEL_BUTTON.instantiate()
 			level_button.set_button(
 				level.level_name,
@@ -122,6 +123,8 @@ func enter_main_menu() -> void:
 	get_tree().change_scene_to_file("res://Common/UI/main_menu.tscn")
 
 func load_level() -> void:
+	await LevelManager.mosaic_out(self)
+	print("test")
 	LevelManager.current_level = current_level_index + 1
 	get_tree().change_scene_to_file("res://Stages/main.tscn")
 

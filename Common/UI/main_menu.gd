@@ -12,11 +12,11 @@ var current_input_method := InputMethod.MOUSE
 @onready var level_select_button: Button = $HBoxContainer/SelectionContainer/button_container/level_select_button
 @onready var versus_button: Button = $HBoxContainer/SelectionContainer/button_container/versus_button
 @onready var level_editor_button: Button = $HBoxContainer/SelectionContainer/button_container/level_editor_button
-@onready var canvas_layer: CanvasLayer = $CanvasLayer
 
 func _ready() -> void:
 	setup_icons()
 	InputManager.input_method_changed.connect(_on_input_method_changed)
+	LevelManager.add_mosaic(self)
 	logo_animation()
 
 func _input(event: InputEvent) -> void:
@@ -46,7 +46,7 @@ func setup_icons() -> void:
 	button_container.get_child(0).grab_focus()
 
 func logo_animation() -> void:
-	mosaic_transition()
+	LevelManager.mosaic_in(self)
 	await get_tree().create_timer(2.0).timeout
 	var logo_tween = create_tween()
 	logo_tween.tween_property(
@@ -92,10 +92,8 @@ func _on_input_method_changed(input: InputManager.InputMethod) -> void:
 	elif input == InputManager.InputMethod.CONTROLLER:
 		disable_mouse_interaction()
 		Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
-
-func mosaic_transition() -> void:
-	await canvas_layer.transition_in()
 	
 func _on_level_select_button_pressed() -> void:
 	# load level selector
+	await LevelManager.mosaic_out(self)
 	get_tree().change_scene_to_file("res://Common/UI/LevelSelect/level_menu.tscn")

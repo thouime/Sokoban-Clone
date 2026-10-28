@@ -5,6 +5,9 @@ signal level_loaded
 const PLAYER = preload("res://Entities/Player/player.tscn")
 const BOX = preload("res://Entities/Objects/box.tscn")
 const SWITCH = preload("res://Entities/Objects/switch.tscn")
+const MOSAIC_EFFECT = preload("res://Common/UI/mosaic_effect.tscn")
+
+var current_scene: Node
 
 var level_database: LevelDatabase
 var level_data: LevelData
@@ -68,10 +71,14 @@ func load_level() -> void:
 	game_over_screen = get_tree().root.get_node("Main/UserInterface/GameOverScreen")
 	set_status_bar()
 	
-	#center_level(level_instance, get_viewport().get_visible_rect().size, 64)
+	center_level(level_instance, get_viewport().get_visible_rect().size, 64)
 	
 	# Populate the map with player, boxes, and switches
 	spawn_entities()
+	
+	LevelManager.add_mosaic(level_instance)
+	await LevelManager.mosaic_in(level_instance)
+	current_scene = level_instance
 	level_loaded.emit()
 
 func restart_level() -> void:
@@ -201,7 +208,26 @@ func check_win_condition() -> void:
 	
 	if activated_count == switches.size():
 		print("Level Completed!")
-		
+
+func add_mosaic(scene: Node) -> void:
+	var mosiac_effect: Node = MOSAIC_EFFECT.instantiate()
+	mosiac_effect.name = "MosaicEffect"
+	scene.add_child(mosiac_effect)
+	
+func mosaic_in(scene: Node) -> void:
+	if not scene.has_node("MosaicEffect"):
+		printerr("Node does not have Mosaic as a canvas layer!")
+		return
+	var mosaic_effect = scene.get_node("MosaicEffect")
+	await mosaic_effect.transition_in()
+
+func mosaic_out(scene: Node) -> void:
+	if not scene.has_node("MosaicEffect"):
+		printerr("Node does not have Mosaic as a canvas layer!")
+		return
+	var mosaic_effect = scene.get_node("MosaicEffect")
+	await mosaic_effect.transition_out()
+
 class Move:
 	var node: Moveable
 	var direction: Vector2i

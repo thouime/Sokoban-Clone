@@ -13,4 +13,5 @@ func set_button(lvl_name, num, level) -> void:
 
 func _on_pressed() -> void:
 	LevelManager.current_level = level_num
+	await LevelManager.mosaic_out(LevelManager.current_scene)
 	get_tree().change_scene_to_file("res://Stages/main.tscn")

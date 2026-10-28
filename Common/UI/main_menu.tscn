@@ -6,8 +6,6 @@
 [ext_resource type="StyleBox" uid="uid://bgp06upi6ul74" path="res://Common/UI/new_style_box_empty.tres" id="4_6n030"]
 [ext_resource type="Shader" uid="uid://brmhl0dio4okx" path="res://Common/UI/animated_bg.gdshader" id="4_d7tdu"]
 [ext_resource type="Texture2D" uid="uid://cvj25kqb6kjpp" path="res://Common/Assets/menu_logo.png" id="4_qc5ww"]
-[ext_resource type="Shader" uid="uid://bo7v5b13qote0" path="res://Common/UI/mosaic_effect.gdshader" id="7_d6lm4"]
-[ext_resource type="Script" uid="uid://cyay1ji3imxk3" path="res://Common/UI/canvas_layer.gd" id="7_tnpqk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p5vlc"]
 shader = ExtResource("4_d7tdu")
@@ -72,11 +70,6 @@ expand_margin_left = 10.0
 expand_margin_top = 25.0
 expand_margin_right = 45.0
 expand_margin_bottom = 25.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_d7tdu"]
-shader = ExtResource("7_d6lm4")
-shader_parameter/block_size = 1.0
-shader_parameter/fade = 0.0
 
 [node name="MainMenu" type="MarginContainer" unique_id=825664585]
 anchors_preset = 15
@@ -189,18 +182,5 @@ theme_override_styles/hover = ExtResource("4_6n030")
 theme_override_styles/focus = ExtResource("4_6n030")
 text = "Sokoban Editor"
 alignment = 0
-
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1379777253]
-script = ExtResource("7_tnpqk")
-transition_time = 1.0
-
-[node name="Fade" type="ColorRect" parent="CanvasLayer" unique_id=1852437666]
-material = SubResource("ShaderMaterial_d7tdu")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
 
 [connection signal="pressed" from="HBoxContainer/SelectionContainer/button_container/level_select_button" to="." method="_on_level_select_button_pressed"]
