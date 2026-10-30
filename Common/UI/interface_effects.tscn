@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://c2heqke7cy23k"]
+
+[ext_resource type="Script" uid="uid://cyay1ji3imxk3" path="res://Common/UI/canvas_layer.gd" id="1_sndbb"]
+[ext_resource type="Shader" uid="uid://bo7v5b13qote0" path="res://Common/UI/mosaic_effect.gdshader" id="2_5h7la"]
+[ext_resource type="Shader" uid="uid://cp0ynsniwkrt8" path="res://Common/UI/vertical_squash.gdshader" id="3_b8b8p"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d7tdu"]
+shader = ExtResource("2_5h7la")
+shader_parameter/block_size = 1.0
+shader_parameter/fade = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3en5j"]
+shader = ExtResource("3_b8b8p")
+shader_parameter/progress = 1.0
+
+[node name="InterfaceEffects" type="CanvasLayer" unique_id=788479317]
+script = ExtResource("1_sndbb")
+transition_time = 1.0
+
+[node name="Mosaic" type="ColorRect" parent="." unique_id=1485492056]
+material = SubResource("ShaderMaterial_d7tdu")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="VerticalSquash" type="ColorRect" parent="." unique_id=479717997]
+visible = false
+material = SubResource("ShaderMaterial_3en5j")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

@@ -64,7 +64,7 @@ content_margin_right = 10.0
 texture = ExtResource("5_d3fik")
 region_rect = Rect2(3, 0, 91, 45)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d3fik"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ke7um"]
 content_margin_left = 10.0
 content_margin_right = 10.0
 content_margin_bottom = 35.0
@@ -120,7 +120,7 @@ expand_margin_top = 10.0
 expand_margin_right = 45.0
 expand_margin_bottom = 10.0
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_42oh2"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_begy3"]
 content_margin_left = 0.0
 content_margin_top = 0.0
 content_margin_right = 150.0
@@ -174,7 +174,7 @@ expand_margin_top = 10.0
 expand_margin_right = 45.0
 expand_margin_bottom = 10.0
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fhbyk"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8wqt5"]
 content_margin_left = 25.0
 content_margin_top = 0.0
 content_margin_bottom = 0.0
@@ -226,12 +226,10 @@ theme_override_constants/separation = 0
 [node name="course_select_button" type="Button" parent="VBoxContainer/MarginContainer/button_container" unique_id=940871112]
 layout_mode = 2
 focus_mode = 0
+mouse_filter = 2
 theme_override_colors/font_color = Color(0.03137255, 0.03137255, 0.03137255, 1)
 theme_override_colors/font_focus_color = Color(0.8392157, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_disabled_color = Color(0.03137255, 0.03137255, 0.03137255, 1)
 theme_override_fonts/font = ExtResource("1_xil51")
 theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = ExtResource("3_jp8xn")
@@ -262,11 +260,10 @@ text = "Course"
 [node name="course_select_button2" type="Button" parent="VBoxContainer/MarginContainer/button_container" unique_id=1224568265]
 layout_mode = 2
 focus_mode = 0
+mouse_filter = 2
 theme_override_colors/font_color = Color(0.03137255, 0.03137255, 0.03137255, 1)
 theme_override_colors/font_focus_color = Color(0.8392157, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_xil51")
 theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = ExtResource("3_jp8xn")
@@ -297,11 +294,10 @@ text = "Course"
 [node name="course_select_button3" type="Button" parent="VBoxContainer/MarginContainer/button_container" unique_id=2017977671]
 layout_mode = 2
 focus_mode = 0
+mouse_filter = 2
 theme_override_colors/font_color = Color(0.03137255, 0.03137255, 0.03137255, 1)
 theme_override_colors/font_focus_color = Color(0.8392157, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_xil51")
 theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = ExtResource("3_jp8xn")
@@ -332,11 +328,10 @@ text = "Course"
 [node name="course_select_button4" type="Button" parent="VBoxContainer/MarginContainer/button_container" unique_id=437607640]
 layout_mode = 2
 focus_mode = 0
+mouse_filter = 2
 theme_override_colors/font_color = Color(0.03137255, 0.03137255, 0.03137255, 1)
 theme_override_colors/font_focus_color = Color(0.8392157, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_xil51")
 theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = ExtResource("3_jp8xn")
@@ -367,11 +362,10 @@ text = "Course"
 [node name="course_select_button5" type="Button" parent="VBoxContainer/MarginContainer/button_container" unique_id=559057299]
 layout_mode = 2
 focus_mode = 0
+mouse_filter = 2
 theme_override_colors/font_color = Color(0.03137255, 0.03137255, 0.03137255, 1)
 theme_override_colors/font_focus_color = Color(0.8392157, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_xil51")
 theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = ExtResource("3_jp8xn")
@@ -402,11 +396,10 @@ text = "Course"
 [node name="course_select_button6" type="Button" parent="VBoxContainer/MarginContainer/button_container" unique_id=307955889]
 layout_mode = 2
 focus_mode = 0
+mouse_filter = 2
 theme_override_colors/font_color = Color(0.03137255, 0.03137255, 0.03137255, 1)
 theme_override_colors/font_focus_color = Color(0.8392157, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_xil51")
 theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = ExtResource("3_jp8xn")
@@ -448,7 +441,7 @@ layout_mode = 2
 [node name="LeftTipLabel" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/LeftTipContainer/HBoxContainer" unique_id=616867040]
 layout_mode = 2
 theme_override_colors/default_color = Color(0.03137255, 0.03137255, 0.03137255, 1)
-theme_override_styles/normal = SubResource("StyleBoxEmpty_d3fik")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ke7um")
 bbcode_enabled = true
 text = "         [img]res://Common/Assets/Icons/finger_point_reverse.png[/img]
 [img=32x32]res://Common/Assets/UI/controller_lb.tres[/img] Button     
@@ -483,7 +476,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_8y7sr")
 layout_mode = 2
 theme_override_colors/font_color = Color(0.03137255, 0.03137255, 0.03137255, 1)
 theme_override_fonts/font = ExtResource("1_xil51")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_42oh2")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_begy3")
 theme_override_styles/focus = ExtResource("4_d3fik")
 text = "Beginner's Test"
 
@@ -647,7 +640,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_h83qs")
 layout_mode = 2
 theme_override_colors/font_color = Color(0.03137255, 0.03137255, 0.03137255, 1)
 theme_override_fonts/font = ExtResource("1_xil51")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_fhbyk")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_8wqt5")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_j6qju")
 text = "Level Code That's really long"
 

@@ -48,7 +48,7 @@ func _ready() -> void:
 		printerr("Could not find level database.")
 		return
 	
-	LevelManager.add_mosaic(self)
+	LevelManager.add_ui_effect(self)
 	
 	var levels_array = level_database.get_levels_category(
 		LevelManager.current_category
@@ -137,7 +137,7 @@ func move_selector(dx: int, dy: int) -> void:
 	var grid: GridContainer = container.get_node("PanelContainer/GridContainer")
 	var columns = grid.columns
 	
-	var row = current_level_index / columns
+	var row = floori(float(current_level_index) / columns)
 	var col = current_level_index % columns
 	var new_row = row + dy
 	var new_col = col + dx
@@ -196,7 +196,6 @@ func show_default_category() -> void:
 	var category = LevelData.Category.values()[0]
 
 	set_icon_visible(category_buttons[current_category_index], true)
-	category_buttons[current_category_index].grab_focus()
 
 	for child in category_containers.values():
 		child.visible = false
@@ -223,7 +222,7 @@ func switch_category(direction: int) -> void:
 	set_icon_visible(category_buttons[current_category_index], false)
 	current_category_index = new_index
 	set_icon_visible(category_buttons[current_category_index], true)
-	category_buttons[current_category_index].grab_focus()
+	#category_buttons[current_category_index].grab_focus()
 	
 	var category = LevelData.Category.values()[current_category_index]
 	var previous_category = LevelData.Category.values()[previous_index]
@@ -238,7 +237,9 @@ func switch_category(direction: int) -> void:
 	
 	var current_category = LevelManager.current_category
 	var category_size = LevelDatabase.Category.size()
-	current_category = clampi(current_category + direction, 0, category_size - 1)
+	current_category = clampi(
+		current_category + direction, 0, category_size - 1
+	) as LevelDatabase.Category
 	LevelManager.current_category = current_category
 
 func slide_category(
@@ -311,7 +312,6 @@ func select_level(index: int) -> void:
 	position_level_pointer(level_buttons[index])
 
 func position_level_pointer(button: Button) -> void:
-	var category = LevelData.Category.values()[current_category_index]
 	level_pointer_icon.visible = true
 	var target_x = (
 		button.global_position.x - level_pointer_icon.size.x + POINTER_OVERLAP

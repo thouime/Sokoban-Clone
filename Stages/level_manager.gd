@@ -5,7 +5,7 @@ signal level_loaded
 const PLAYER = preload("res://Entities/Player/player.tscn")
 const BOX = preload("res://Entities/Objects/box.tscn")
 const SWITCH = preload("res://Entities/Objects/switch.tscn")
-const MOSAIC_EFFECT = preload("res://Common/UI/mosaic_effect.tscn")
+const INTERFACE_EFFECTS = preload("res://Common/UI/interface_effects.tscn")
 
 var current_scene: Node
 
@@ -13,7 +13,7 @@ var level_database: LevelDatabase
 var level_data: LevelData
 var level_instance: Node
 
-var current_category: LevelDatabase.Category = 0
+var current_category := LevelDatabase.Category.BEGINNERS_TEST
 var current_level := 0
 var num_steps := 0
 var move_limit := -1
@@ -76,19 +76,10 @@ func load_level() -> void:
 	# Populate the map with player, boxes, and switches
 	spawn_entities()
 	
-	LevelManager.add_mosaic(level_instance)
-	await LevelManager.mosaic_in(level_instance)
+	add_ui_effect(level_instance)
+	await expand_out(level_instance)
 	current_scene = level_instance
 	level_loaded.emit()
-
-func restart_level() -> void:
-	game_over_active = false
-	get_tree().paused = false
-	load_level()
-
-# Load the next level in the array
-func next_level() -> void:
-	pass
 
 func set_status_bar() -> void:
 	status_bar.set_stage_num(current_level)
@@ -195,7 +186,20 @@ func game_over() -> void:
 	get_tree().paused = true
 	game_over_active = true
 	game_over_time = 0.0
-	
+
+func restart_level() -> void:
+	game_over_active = false
+	get_tree().paused = false
+	load_level()
+
+# Load the next level in the array
+func next_level() -> void:
+	# congratulations splash screen
+	# fade out
+	# check if this is the last level of category
+	await shrink_in(level_instance)
+	load_level()
+
 func check_win_condition() -> void:
 	var switches = get_tree().get_nodes_in_group("switches")
 	var boxes = get_tree().get_nodes_in_group("boxes")
@@ -207,26 +211,50 @@ func check_win_condition() -> void:
 				break
 	
 	if activated_count == switches.size():
+		current_level += 1
+		next_level()
 		print("Level Completed!")
 
-func add_mosaic(scene: Node) -> void:
-	var mosiac_effect: Node = MOSAIC_EFFECT.instantiate()
-	mosiac_effect.name = "MosaicEffect"
-	scene.add_child(mosiac_effect)
+func add_ui_effect(scene: Node) -> void:
+	var ui_effect: Node = INTERFACE_EFFECTS.instantiate()
+	ui_effect.name = "InterfaceEffects"
+	scene.add_child(ui_effect)
 	
 func mosaic_in(scene: Node) -> void:
-	if not scene.has_node("MosaicEffect"):
+	if not is_ui_effect(scene):
 		printerr("Node does not have Mosaic as a canvas layer!")
 		return
-	var mosaic_effect = scene.get_node("MosaicEffect")
+	var mosaic_effect = scene.get_node("InterfaceEffects")
+	mosaic_effect.use_mosaic(true)
 	await mosaic_effect.transition_in()
 
 func mosaic_out(scene: Node) -> void:
-	if not scene.has_node("MosaicEffect"):
+	if not is_ui_effect(scene):
 		printerr("Node does not have Mosaic as a canvas layer!")
 		return
-	var mosaic_effect = scene.get_node("MosaicEffect")
+	var mosaic_effect = scene.get_node("InterfaceEffects")
+	mosaic_effect.use_mosaic(true)
 	await mosaic_effect.transition_out()
+	
+func shrink_in(scene: Node) -> void:
+	if not is_ui_effect(scene):
+		printerr("Node does not have Mosaic as a canvas layer!")
+		return
+	var vertical_squash = scene.get_node("InterfaceEffects")
+	vertical_squash.use_mosaic(false)
+	await vertical_squash.shrink_in()
+
+func is_ui_effect(scene: Node) -> bool:
+	var nodes = scene.get_children()
+	return nodes.any(func(node): return node is InterfaceEffect)
+
+func expand_out(scene: Node) -> void:
+	if not scene.has_node("InterfaceEffects"):
+		printerr("Node does not have Mosaic as a canvas layer!")
+		return
+	var vertical_squash = scene.get_node("InterfaceEffects")
+	vertical_squash.use_mosaic(false)
+	await vertical_squash.expand_out()
 
 class Move:
 	var node: Moveable

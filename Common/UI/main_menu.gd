@@ -16,7 +16,7 @@ var current_input_method := InputMethod.MOUSE
 func _ready() -> void:
 	setup_icons()
 	InputManager.input_method_changed.connect(_on_input_method_changed)
-	LevelManager.add_mosaic(self)
+	LevelManager.add_ui_effect(self)
 	logo_animation()
 
 func _input(event: InputEvent) -> void:

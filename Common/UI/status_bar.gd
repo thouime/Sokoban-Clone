@@ -20,7 +20,7 @@ func set_step_num(num: int) -> void:
 func set_limit_num(num: int) -> void:
 	limit_num.text = "%04d" % num
 
-func _on_player_entered(body: Node2D) -> void:
+func _on_player_entered(_body: Node2D) -> void:
 	if anchor_left == 0.0:
 		set_anchors_and_offsets_preset(Control.PRESET_TOP_RIGHT)
 	else:
